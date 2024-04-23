@@ -13,7 +13,7 @@ export class TodosService {
   constructor(private http: HttpClient) { }
 
   getTodos() {
-    this.http.get<Todolist[]>(`https://social-network.samuraijs.com/api/1.1/todo-lists`).subscribe(
+    return this.http.get<Todolist[]>(`https://social-network.samuraijs.com/api/1.1/todo-lists`).subscribe(
       (todos) => this.todos$.next(todos)
     )
   }
