@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TodosService } from '../services/todos.service';
+import { TodosService } from '../../services/todos.service';
 import { Observable } from 'rxjs';
 import { Todolist } from 'src/app/core/models';
 

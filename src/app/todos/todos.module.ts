@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TodosRoutingModule } from './todos-routing.module';
-import { TodosComponent } from './component/todos.component';
+import { TodosComponent } from './component/todos/todos.component';
 import { HttpClientModule } from '@angular/common/http';
 
 
