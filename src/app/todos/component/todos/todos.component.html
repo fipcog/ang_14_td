@@ -1,1 +1,2 @@
-<div *ngFor="let todo of todos$ | async; let i = index">{{todo.title}}-{{i}}</div>
+<td-add-todo-form></td-add-todo-form>
+<td-todo *ngFor="let todo of todos$ | async" [todo]="todo" (deleteTodo)="deleteTodoHandler($event)"></td-todo>

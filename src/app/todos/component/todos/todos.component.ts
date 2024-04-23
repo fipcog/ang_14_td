@@ -9,7 +9,6 @@ import { Todolist } from 'src/app/core/models';
   styleUrls: ['./todos.component.scss']
 })
 export class TodosComponent implements OnInit {
-
   todos$!: Observable<Todolist[]>
 
   constructor(private todosService: TodosService) { }
@@ -18,5 +17,9 @@ export class TodosComponent implements OnInit {
     this.todos$ = this.todosService.todos$
 
     this.todosService.getTodos()
+  }
+
+  deleteTodoHandler(todoId: string) {
+    this.todosService.deleteTodo(todoId)
   }
 }
