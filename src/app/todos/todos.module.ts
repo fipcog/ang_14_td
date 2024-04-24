@@ -8,13 +8,15 @@ import { TodoComponent } from './component/todos/todo/todo.component';
 import { AddTodoFormComponent } from './component/todos/add-todo-form/add-todo-form.component';
 import { FormsModule } from '@angular/forms';
 import { ShareModule } from '../share/share.module';
+import { TasksListComponent } from './component/todos/todo/tasks-list/tasks-list.component';
 
 
 @NgModule({
   declarations: [
     TodosComponent,
     TodoComponent,
-    AddTodoFormComponent
+    AddTodoFormComponent,
+    TasksListComponent
   ],
   imports: [
     CommonModule,
