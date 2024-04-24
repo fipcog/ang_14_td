@@ -1,1 +1,5 @@
-<p>tasks-list works!</p>
+<input type="text" [(ngModel)]="newTaskTitle" (keyup.enter)="addTaskHandler()">
+<td-task 
+  *ngFor="let task of tasks$ | async"
+  [task]="task"
+></td-task>
