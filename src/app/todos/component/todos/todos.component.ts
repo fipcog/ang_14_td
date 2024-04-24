@@ -19,6 +19,10 @@ export class TodosComponent implements OnInit {
     this.todosService.getTodos()
   }
 
+  updateTodoHandler(data: { title: string; todoId: string; }) {
+    this.todosService.updateTodo(data)
+  }
+
   deleteTodoHandler(todoId: string) {
     this.todosService.deleteTodo(todoId)
   }

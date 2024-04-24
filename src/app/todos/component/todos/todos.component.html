@@ -1,2 +1,7 @@
 <td-add-todo-form></td-add-todo-form>
-<td-todo *ngFor="let todo of todos$ | async" [todo]="todo" (deleteTodo)="deleteTodoHandler($event)"></td-todo>
+<td-todo
+ *ngFor="let todo of todos$ | async"
+  [todo]="todo"
+  (deleteTodo)="deleteTodoHandler($event)"
+  (updateTodo)="updateTodoHandler($event)"
+></td-todo>

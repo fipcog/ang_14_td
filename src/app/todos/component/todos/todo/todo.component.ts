@@ -10,11 +10,16 @@ export class TodoComponent implements OnInit {
 
   @Input() todo!: Todolist
   @Output() deleteTodo = new EventEmitter<string>()
+  @Output() updateTodo = new EventEmitter<{ title: string, todoId: string }>()
 
   constructor() { }
 
   ngOnInit(): void {
 
+  }
+
+  updateTodoHandler(title: string) {
+    this.updateTodo.emit({ title, todoId: this.todo.id })
   }
 
   deleteTodoHandler() {

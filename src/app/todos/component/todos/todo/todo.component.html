@@ -1,2 +1,2 @@
-<p>{{todo.title}}</p>
+<td-editable-text [value]="todo.title" (getNewValue)="updateTodoHandler($event)"></td-editable-text>
 <button (click)="deleteTodoHandler()">X</button>

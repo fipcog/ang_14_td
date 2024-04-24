@@ -1,0 +1,4 @@
+<span *ngIf="!isEditMode; else input" (click)="startEditHandler()">{{value}}</span>
+<ng-template #input>
+  <input type="text" autofocus [(ngModel)]="value" (blur)="disableEditHandler()">
+</ng-template>

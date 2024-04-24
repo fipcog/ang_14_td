@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TodoComponent } from './component/todos/todo/todo.component';
 import { AddTodoFormComponent } from './component/todos/add-todo-form/add-todo-form.component';
 import { FormsModule } from '@angular/forms';
+import { ShareModule } from '../share/share.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     TodosRoutingModule,
     HttpClientModule,
     FormsModule,
+    ShareModule,
   ]
 })
 export class TodosModule { }
