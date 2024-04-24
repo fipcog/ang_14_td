@@ -10,3 +10,27 @@ export interface BaseResponse<T = {}> {
   messages: string[],
   data: T
 }
+
+export interface Task {
+  description: string
+  title: string
+  completed: boolean
+  status: number
+  priority: number
+  startDate: Date
+  deadline: Date
+  id: string
+  todoListId: string
+  order: number
+  addedDate: Date
+}
+
+export interface DomainTasks {
+  [key: string]: Task[]
+}
+
+export interface GetTasksResponse {
+  items: Task[]
+  totalCount: number
+  error: string
+}
