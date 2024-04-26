@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { Task } from 'src/app/core/models';
+import { Task, UpdateTask } from 'src/app/core/models';
 import { TasksService } from 'src/app/todos/services/tasks.service';
 
 @Component({
@@ -31,5 +31,13 @@ export class TasksListComponent implements OnInit {
     } else {
       alert('Task title should nit be ampty')
     }
+  }
+
+  deleteTaskHandler(taskId: string) {
+    this.tasksService.deleteTask(this.todoId, taskId)
+  }
+
+  updateTaskHandler(data: { model: UpdateTask, taskId: string }) {
+    this.tasksService.updateTask(this.todoId, data.taskId, data.model)
   }
 }

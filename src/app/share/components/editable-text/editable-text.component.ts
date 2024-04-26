@@ -15,7 +15,7 @@ export class EditableTextComponent {
   }
 
   disableEditHandler() {
-    if (this.value.length > 0) {
+    if (this.value && this.value.length > 0) {
       this.getNewValue.emit(this.value)
       this.isEditMode = false
     } else {

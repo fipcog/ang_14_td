@@ -56,7 +56,8 @@ export class TasksService {
     return this.http.delete(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todoId}/tasks/${taskId}`)
       .subscribe(() => {
         const currentState = this.tasks$.getValue()
-        const newTasks = currentState[todoId].filter(todo => todo.id !== todoId)
+        const newTasks = currentState[todoId].filter(task => task.id !== taskId)
+        this.tasks$.next({ ...currentState, [todoId]: newTasks })
       })
   }
 }

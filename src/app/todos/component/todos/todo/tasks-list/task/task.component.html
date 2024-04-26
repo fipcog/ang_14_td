@@ -1,5 +1,11 @@
 <div>
-  <input type="checkbox" [checked]="taskStatus">
-  <span>{{task?.title}}</span>
-  <button>X</button>
+  <input type="checkbox" 
+    [checked]="task.status === complete.done"
+    (change)="updateTaskStatusHandler($event)"
+  >
+  <td-editable-text 
+    [value]="task.title" 
+    (getNewValue)="getNewTaskTitle($event)"
+  ></td-editable-text>
+  <button (click)="deleteTaskHandler()">X</button>
 </div>
