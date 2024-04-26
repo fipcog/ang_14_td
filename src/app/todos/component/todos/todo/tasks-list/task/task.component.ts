@@ -15,22 +15,14 @@ export class TaskComponent {
   complete = Complete
 
   updateTaskTitleHandler(title: string) {
-    const baseModel: UpdateTask = {
-      completed: this.task.completed,
-      deadline: this.task.deadline,
-      description: this.task.description,
-      priority: this.task.priority,
-      startDate: this.task.startDate,
-      status: this.task.status,
-      title: this.task.title
-    }
-    this.updateTask.emit({
-      model: { ...baseModel, title },
-      taskId: this.task.id
-    })
+    this.updateTaskPatch({ title })
   }
 
   updateTaskStatusHandler(e: Event) {
+    this.updateTaskPatch({ status: (e.currentTarget as HTMLInputElement).checked ? Complete.done : Complete.inProcess })
+  }
+
+  updateTaskPatch(patch: Partial<UpdateTask>) {
     const baseModel: UpdateTask = {
       completed: this.task.completed,
       deadline: this.task.deadline,
@@ -41,7 +33,7 @@ export class TaskComponent {
       title: this.task.title
     }
     this.updateTask.emit({
-      model: { ...baseModel, status: (e.currentTarget as HTMLInputElement).checked ? Complete.done : Complete.inProcess },
+      model: { ...baseModel, ...patch },
       taskId: this.task.id
     })
   }
