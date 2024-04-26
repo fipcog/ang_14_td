@@ -34,3 +34,13 @@ export interface GetTasksResponse {
   totalCount: number
   error: string
 }
+
+export interface UpdateTask {
+  title?: string
+  description?: string
+  completed?: boolean
+  status?: number
+  priority?: number
+  startDate?: Date
+  deadline?: Date
+}
