@@ -36,11 +36,11 @@ export interface GetTasksResponse {
 }
 
 export interface UpdateTask {
-  title?: string
-  description?: string
-  completed?: boolean
-  status?: number
-  priority?: number
-  startDate?: Date
-  deadline?: Date
+  title: string
+  description: string
+  completed: boolean
+  status: number
+  priority: number
+  startDate: Date
+  deadline: Date
 }

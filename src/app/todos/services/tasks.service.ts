@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
-import { BaseResponse, DomainTasks, GetTasksResponse, Task } from 'src/app/core/models';
+import { BaseResponse, DomainTasks, GetTasksResponse, Task, UpdateTask } from 'src/app/core/models';
 
 @Injectable({
   providedIn: 'root'
@@ -40,5 +40,15 @@ export class TasksService {
       )
   }
 
-  // updateTask()
+  updateTask(todoId: string, taskId: string, updateModel: UpdateTask) {
+    return this.http.put<BaseResponse<{ item: Task }>>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todoId}/tasks/${taskId}`, updateModel)
+      .pipe(map(
+        res => res.data.item
+      ))
+      .subscribe(newTask => {
+        const currentState = this.tasks$.getValue()
+        const newTasks = currentState[todoId].map(task => task.id === taskId ? newTask : task)
+        this.tasks$.next({ ...currentState, [todoId]: newTasks })
+      })
+  }
 }
