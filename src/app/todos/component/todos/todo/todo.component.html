@@ -1,3 +1,7 @@
-<td-editable-text [value]="todo.title" (getNewValue)="updateTodoHandler($event)"></td-editable-text>
-<button (click)="deleteTodoHandler()">X</button>
+<td-editable-text 
+  class="todoHeader"
+  [value]="todo.title" 
+  (getNewValue)="updateTodoHandler($event)"
+></td-editable-text>
+<button class="removeTodoBtn" (click)="deleteTodoHandler()">X</button>
 <td-tasks-list [todoId]="todo.id"></td-tasks-list>

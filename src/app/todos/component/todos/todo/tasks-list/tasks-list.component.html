@@ -1,4 +1,9 @@
-<input type="text" [(ngModel)]="newTaskTitle" (keyup.enter)="addTaskHandler()">
+<input 
+type="text" 
+class="addTaskInput"
+[(ngModel)]="newTaskTitle" 
+(keyup.enter)="addTaskHandler()"
+>
 <td-task 
   *ngFor="let task of tasks$ | async"
   [task]="task"

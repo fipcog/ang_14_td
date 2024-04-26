@@ -1,0 +1,26 @@
+:host {
+  position: relative;
+  width: 250px;
+
+  padding: 30px 20px;
+
+  border: 1px solid black;
+}
+
+.todoHeader {
+  display: block;
+
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  text-align: center;
+
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.removeTodoBtn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
