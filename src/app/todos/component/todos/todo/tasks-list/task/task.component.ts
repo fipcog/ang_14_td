@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Complete } from 'src/app/core/enums/complete.enum';
 import { Task } from 'src/app/core/models';
 
 @Component({
@@ -11,6 +12,6 @@ export class TaskComponent implements OnInit {
   taskStatus!: boolean
 
   ngOnInit(): void {
-    this.taskStatus = this.task?.status === 1 ? true : false
+    this.taskStatus = this.task?.status === Complete.done ? true : false
   }
 }
