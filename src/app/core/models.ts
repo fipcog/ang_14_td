@@ -5,6 +5,16 @@ export interface Todolist {
   title: string
 }
 
+export type TodoFilter = 'all' | 'active' | 'completed'
+
+export interface TodolistWithFilter {
+  addedDate: string
+  id: string
+  order: number
+  title: string
+  filter: TodoFilter
+}
+
 export interface BaseResponse<T = {}> {
   resultCode: number
   messages: string[],

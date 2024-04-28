@@ -1,19 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map } from 'rxjs';
-import { BaseResponse, Todolist } from 'src/app/core/models';
+import { BehaviorSubject, filter, map } from 'rxjs';
+import { BaseResponse, TodoFilter, Todolist, TodolistWithFilter } from 'src/app/core/models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodosService {
 
-  todos$ = new BehaviorSubject<Todolist[]>([])
+  todos$ = new BehaviorSubject<TodolistWithFilter[]>([])
 
   constructor(private http: HttpClient) { }
 
   getTodos() {
     return this.http.get<Todolist[]>(`https://social-network.samuraijs.com/api/1.1/todo-lists`)
+      .pipe(map(
+        todos => todos.map(td => {
+          const result: TodolistWithFilter = { ...td, filter: 'all' }
+          return result
+        })
+      ))
       .subscribe(
         (todos) => this.todos$.next(todos)
       )
@@ -23,8 +29,9 @@ export class TodosService {
     return this.http.post<BaseResponse<{ item: Todolist }>>(`https://social-network.samuraijs.com/api/1.1/todo-lists`, { title })
       .pipe(map(res => {
         const currentState = this.todos$.getValue()
-        const newTodo = res.data.item
-        return [newTodo, ...currentState]
+        const newTodo: TodolistWithFilter = { ...res.data.item, filter: 'all' }
+        const result: TodolistWithFilter[] = [newTodo, ...currentState]
+        return result
       }))
       .subscribe(
         todos => this.todos$.next(todos)
@@ -50,6 +57,12 @@ export class TodosService {
       })
       )
       .subscribe(todos => this.todos$.next(todos))
+  }
+
+  changeTodoFilter(filter: TodoFilter, todoId: string) {
+    const currentState = this.todos$.getValue()
+    const newTodos = currentState.map(td => td.id === todoId ? { ...td, filter } : td)
+    this.todos$.next(newTodos)
   }
 
 }
