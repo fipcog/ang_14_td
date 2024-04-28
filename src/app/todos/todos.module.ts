@@ -11,7 +11,7 @@ import { ShareModule } from '../share/share.module';
 import { TasksListComponent } from './component/todos/todo/tasks-list/tasks-list.component';
 import { TaskComponent } from './component/todos/todo/tasks-list/task/task.component';
 import { TodolistFooterComponent } from './component/todos/todo/todolist-footer/todolist-footer.component';
-import { TodolistFilterComponent } from './component/todos/todo/todolist-footer/todolist-filter/todolist-filter.component';
+import { TodolistFilterComponent } from './component/todos/todo/todolist-filter/todolist-filter.component';
 
 
 @NgModule({

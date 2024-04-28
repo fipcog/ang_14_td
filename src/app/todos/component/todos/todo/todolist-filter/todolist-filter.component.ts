@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TodosService } from 'src/app/todos/services/todos.service';
 
 @Component({
   selector: 'td-todolist-filter',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./todolist-filter.component.scss']
 })
 export class TodolistFilterComponent {
+  constructor(private todosSetvice: TodosService) { }
 
+  changeFilterHandler() {
+
+  }
 }
