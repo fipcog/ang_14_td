@@ -8,13 +8,10 @@ import { TodoFilter } from 'src/app/core/models';
 })
 export class TodolistFilterComponent {
   @Input() todoFilter!: TodoFilter
-  @Output() todoFilterChangedemitter = new EventEmitter()
-
-  isAll = this.todoFilter === 'all'
-  isActive = this.todoFilter === 'active'
-  isCompleted = this.todoFilter === 'completed'
+  @Output() todoFilterChangedEmitter = new EventEmitter<TodoFilter>()
 
   changeFilterHandler(filter: TodoFilter) {
-    this.todoFilterChangedemitter.emit(filter)
+    this.todoFilterChangedEmitter.emit(filter)
   }
+
 }

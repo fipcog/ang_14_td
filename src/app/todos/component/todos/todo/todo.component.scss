@@ -1,5 +1,7 @@
 :host {
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: 250px;
 
   padding: 30px 20px;

@@ -1,14 +1,14 @@
 <div class="container">
   <button 
-    *[ngClass]="{ 'active': isAll }" 
+    [ngClass]="{ 'active': todoFilter === 'all', 'filterButton': true }" 
     (click)="changeFilterHandler('all')"
   >ALL</button>
   <button 
-    *[ngClass]="{ 'active': isActive }" 
+    [ngClass]="{ 'active': todoFilter === 'active', 'filterButton': true }" 
     (click)="changeFilterHandler('active')"
   >ACTIVE</button>
   <button 
-    *[ngClass]="{ 'active': isCompleted }" 
+    [ngClass]="{ 'active': todoFilter === 'completed', 'filterButton': true }" 
     (click)="changeFilterHandler('completed')"
   >COMPLETED</button>
 </div>

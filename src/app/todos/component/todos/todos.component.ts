@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodosService } from '../../services/todos.service';
 import { Observable } from 'rxjs';
-import { Todolist } from 'src/app/core/models';
+import { TodoFilter, Todolist, TodolistWithFilter } from 'src/app/core/models';
 
 @Component({
   selector: 'td-todos',
@@ -9,7 +9,7 @@ import { Todolist } from 'src/app/core/models';
   styleUrls: ['./todos.component.scss']
 })
 export class TodosComponent implements OnInit {
-  todos$!: Observable<Todolist[]>
+  todos$!: Observable<TodolistWithFilter[]>
 
   constructor(private todosService: TodosService) { }
 
@@ -25,5 +25,9 @@ export class TodosComponent implements OnInit {
 
   deleteTodoHandler(todoId: string) {
     this.todosService.deleteTodo(todoId)
+  }
+
+  changeFilterHandler(data: { filter: TodoFilter, todoId: string }) {
+    this.todosService.changeTodoFilter(data.filter, data.todoId)
   }
 }

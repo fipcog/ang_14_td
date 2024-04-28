@@ -1,0 +1,14 @@
+:host {
+  align-self: flex-end;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.active {
+  background-color: rgb(168, 205, 240);
+}

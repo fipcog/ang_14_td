@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { Task, UpdateTask } from 'src/app/core/models';
+import { Complete } from 'src/app/core/enums/complete.enum';
+import { Task, TodolistWithFilter, UpdateTask } from 'src/app/core/models';
 import { TasksService } from 'src/app/todos/services/tasks.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { TasksService } from 'src/app/todos/services/tasks.service';
   styleUrls: ['./tasks-list.component.scss']
 })
 export class TasksListComponent implements OnInit {
-  @Input() todoId = ''
+  @Input() todo!: TodolistWithFilter
 
   tasks$!: Observable<Task[]>
   newTaskTitle = ''
@@ -17,16 +18,25 @@ export class TasksListComponent implements OnInit {
   constructor(private tasksService: TasksService) { }
 
   ngOnInit(): void {
-    this.tasksService.getTasks(this.todoId)
+    this.tasksService.getTasks(this.todo.id)
 
     this.tasks$ = this.tasksService.tasks$.pipe(map(
-      dTasks => dTasks[this.todoId]
+      dTasks => {
+        let result = dTasks[this.todo.id]
+        if (this.todo.filter === 'active') {
+          result = result.filter(task => task.status !== Complete.done)
+        }
+        if (this.todo.filter === 'completed') {
+          result = result.filter(task => task.status !== Complete.inProcess)
+        }
+        return result
+      }
     ))
   }
 
   addTaskHandler() {
     if (this.newTaskTitle.length) {
-      this.tasksService.addTask(this.todoId, this.newTaskTitle)
+      this.tasksService.addTask(this.todo.id, this.newTaskTitle)
       this.newTaskTitle = ''
     } else {
       alert('Task title should nit be ampty')
@@ -34,10 +44,10 @@ export class TasksListComponent implements OnInit {
   }
 
   deleteTaskHandler(taskId: string) {
-    this.tasksService.deleteTask(this.todoId, taskId)
+    this.tasksService.deleteTask(this.todo.id, taskId)
   }
 
   updateTaskHandler(data: { model: UpdateTask, taskId: string }) {
-    this.tasksService.updateTask(this.todoId, data.taskId, data.model)
+    this.tasksService.updateTask(this.todo.id, data.taskId, data.model)
   }
 }

@@ -4,4 +4,5 @@
   (getNewValue)="updateTodoHandler($event)"
 ></td-editable-text>
 <button class="removeTodoBtn" (click)="deleteTodoHandler()">X</button>
-<td-tasks-list [todoId]="todo.id"></td-tasks-list>
+<td-tasks-list [todo]="todo"></td-tasks-list>
+<td-todolist-filter [todoFilter]="todo.filter" (todoFilterChangedEmitter)="changeFilterHandler($event)"></td-todolist-filter>
