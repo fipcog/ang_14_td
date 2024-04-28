@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { ShareModule } from '../share/share.module';
 import { TasksListComponent } from './component/todos/todo/tasks-list/tasks-list.component';
 import { TaskComponent } from './component/todos/todo/tasks-list/task/task.component';
+import { TodolistFooterComponent } from './component/todos/todo/todolist-footer/todolist-footer.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { TaskComponent } from './component/todos/todo/tasks-list/task/task.compo
     TodoComponent,
     AddTodoFormComponent,
     TasksListComponent,
-    TaskComponent
+    TaskComponent,
+    TodolistFooterComponent
   ],
   imports: [
     CommonModule,
