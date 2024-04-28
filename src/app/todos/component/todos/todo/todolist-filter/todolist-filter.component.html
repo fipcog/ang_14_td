@@ -1,1 +1,14 @@
-<p>todolist-filter works!</p>
+<div class="container">
+  <button 
+    *[ngClass]="{ 'active': isAll }" 
+    (click)="changeFilterHandler('all')"
+  >ALL</button>
+  <button 
+    *[ngClass]="{ 'active': isActive }" 
+    (click)="changeFilterHandler('active')"
+  >ACTIVE</button>
+  <button 
+    *[ngClass]="{ 'active': isCompleted }" 
+    (click)="changeFilterHandler('completed')"
+  >COMPLETED</button>
+</div>

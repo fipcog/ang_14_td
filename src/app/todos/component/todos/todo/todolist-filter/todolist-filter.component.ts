@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { TodosService } from 'src/app/todos/services/todos.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { TodoFilter } from 'src/app/core/models';
 
 @Component({
   selector: 'td-todolist-filter',
@@ -7,9 +7,14 @@ import { TodosService } from 'src/app/todos/services/todos.service';
   styleUrls: ['./todolist-filter.component.scss']
 })
 export class TodolistFilterComponent {
-  constructor(private todosSetvice: TodosService) { }
+  @Input() todoFilter!: TodoFilter
+  @Output() todoFilterChangedemitter = new EventEmitter()
 
-  changeFilterHandler() {
+  isAll = this.todoFilter === 'all'
+  isActive = this.todoFilter === 'active'
+  isCompleted = this.todoFilter === 'completed'
 
+  changeFilterHandler(filter: TodoFilter) {
+    this.todoFilterChangedemitter.emit(filter)
   }
 }
