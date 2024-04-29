@@ -11,6 +11,7 @@ import { ShareModule } from '../share/share.module';
 import { TasksListComponent } from './component/todos/todo/tasks-list/tasks-list.component';
 import { TaskComponent } from './component/todos/todo/tasks-list/task/task.component';
 import { TodolistFilterComponent } from './component/todos/todo/todolist-filter/todolist-filter.component';
+import { AuthService } from '../core/services/auth.service';
 
 
 @NgModule({
@@ -28,6 +29,9 @@ import { TodolistFilterComponent } from './component/todos/todo/todolist-filter/
     HttpClientModule,
     FormsModule,
     ShareModule,
+  ],
+  providers: [
+    AuthService,
   ]
 })
 export class TodosModule { }

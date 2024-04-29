@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TodosService } from '../../services/todos.service';
 import { Observable } from 'rxjs';
 import { TodoFilter, Todolist, TodolistWithFilter } from 'src/app/core/models';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'td-todos',
@@ -11,7 +12,10 @@ import { TodoFilter, Todolist, TodolistWithFilter } from 'src/app/core/models';
 export class TodosComponent implements OnInit {
   todos$!: Observable<TodolistWithFilter[]>
 
-  constructor(private todosService: TodosService) { }
+  constructor(
+    private todosService: TodosService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.todos$ = this.todosService.todos$
@@ -29,5 +33,9 @@ export class TodosComponent implements OnInit {
 
   changeFilterHandler(data: { filter: TodoFilter, todoId: string }) {
     this.todosService.changeTodoFilter(data.filter, data.todoId)
+  }
+
+  logoutHandler() {
+    this.authService.logout()
   }
 }
