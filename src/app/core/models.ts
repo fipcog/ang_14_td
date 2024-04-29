@@ -1,3 +1,5 @@
+import { FormControl } from "@angular/forms"
+
 export interface Todolist {
   addedDate: string
   id: string
@@ -53,4 +55,10 @@ export interface UpdateTask {
   priority: number
   startDate: Date
   deadline: Date
+}
+
+export interface LoginForm {
+  email: FormControl<string>
+  password: FormControl<string>
+  rememberMe: FormControl<boolean>
 }
