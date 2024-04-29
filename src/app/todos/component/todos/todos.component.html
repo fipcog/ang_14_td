@@ -1,5 +1,5 @@
 <td-add-todo-form class="addTodoForm"></td-add-todo-form>
-<button (click)="logoutHandler()">Logout</button>
+<button (click)="logoutHandler()" [ngClass]="'logoutBtn'">Logout</button>
 <td-todo
  *ngFor="let todo of todos$ | async"
   [todo]="todo"
