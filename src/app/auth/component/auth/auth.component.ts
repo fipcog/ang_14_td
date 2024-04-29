@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginForm } from './../../../core/models';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'td-auth',
@@ -14,9 +15,11 @@ export class AuthComponent {
     rememberMe: new FormControl(false, { nonNullable: true })
   })
 
+  constructor(private authService: AuthService) { }
+
   submitHandler() {
     const value = this.loginForm.value
-    console.log(value)
+    this.authService.login(value)
   }
 
   get email() {
