@@ -1,12 +1,16 @@
 <form [formGroup]="loginForm" (ngSubmit)="submitHandler()">
   <div>
     <label>Emain: <input type="email" formControlName="email"></label>
-    <div *ngIf="">
-
+    <div *ngIf="email!.invalid && (email!.dirty || email!.touched)">
+      <span *ngIf="email!.errors?.['email']">Email is not valid</span>
+      <span *ngIf="email!.errors?.['required']">Email required</span>
     </div>
   </div>
   <div>
     <label>Password: <input type="password" formControlName="password"></label>
+    <div *ngIf="password!.invalid && (password!.touched || password!.dirty)">
+      <span *ngIf="password!.errors?.['required']">Password required</span>
+    </div>
   </div>
   <div>
     <label><input type="checkbox" formControlName="rememberMe"> RememberMe</label>
