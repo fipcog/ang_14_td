@@ -12,7 +12,7 @@ export class AuthService {
   ) { }
 
   login(data: LoginFormData) {
-    this.http.post<BaseResponse<{ userId: number }>>(`https://social-network.samuraijs.com/api/1.1/auth/login`, { data })
+    this.http.post<BaseResponse<{ userId: number }>>(`https://social-network.samuraijs.com/api/1.1/auth/login`, data)
       .subscribe(res => {
         if (res.resultCode === 0) {
           this.router.navigate([`/`])
