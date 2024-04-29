@@ -27,7 +27,7 @@ export class TasksListComponent implements OnInit {
           result = result.filter(task => task.status !== Complete.done)
         }
         if (this.todo.filter === 'completed') {
-          result = result.filter(task => task.status !== Complete.inProcess)
+          result = result.filter(task => task.status === Complete.done)
         }
         return result
       }
