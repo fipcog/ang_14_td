@@ -15,6 +15,7 @@ export class AuthComponent {
   })
 
   submitHandler() {
-
+    const value = this.loginForm.value
+    console.log(value)
   }
 }
