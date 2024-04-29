@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BaseResponse, LoginForm } from '../models';
+import { BaseResponse, LoginForm, LoginFormData } from '../models';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -11,7 +11,7 @@ export class AuthService {
     private router: Router
   ) { }
 
-  login(data: any) {
+  login(data: LoginFormData) {
     this.http.post<BaseResponse<{ userId: number }>>(`https://social-network.samuraijs.com/api/1.1/auth/login`, { data })
       .subscribe(res => {
         if (res.resultCode === 0) {

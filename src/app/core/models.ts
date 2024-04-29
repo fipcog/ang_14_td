@@ -62,3 +62,9 @@ export interface LoginForm {
   password: FormControl<string>
   rememberMe: FormControl<boolean>
 }
+
+export type LoginFormData = Partial<{
+  email: string;
+  password: string;
+  rememberMe: boolean;
+}>
