@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BaseResponse, LoginForm, LoginFormData } from '../models';
+import { BaseResponse, LoginFormData } from '../models';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -15,6 +15,7 @@ export class AuthService {
     this.http.post<BaseResponse<{ userId: number }>>(`https://social-network.samuraijs.com/api/1.1/auth/login`, data)
       .subscribe(res => {
         if (res.resultCode === 0) {
+          localStorage.setItem('isAuth', 'true')
           this.router.navigate([`/`])
         }
       })
@@ -24,6 +25,7 @@ export class AuthService {
     this.http.delete<BaseResponse>(`https://social-network.samuraijs.com/api/1.1/auth/login`)
       .subscribe(res => {
         if (res.resultCode === 0) {
+          localStorage.removeItem('isAuth')
           this.router.navigate([`/login`])
         }
       })
@@ -31,9 +33,7 @@ export class AuthService {
 
   me() {
     this.http.get<BaseResponse<{ id: number, email: string, login: string }>>(`https://social-network.samuraijs.com/api/1.1/auth/me`)
-      .subscribe(
-        () => { }
-      )
+
   }
 
 }
