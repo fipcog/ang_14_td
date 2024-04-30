@@ -31,7 +31,9 @@ export class AuthService {
 
   me() {
     this.http.get<BaseResponse<{ id: number, email: string, login: string }>>(`https://social-network.samuraijs.com/api/1.1/auth/me`)
-
+      .subscribe(
+        () => { }
+      )
   }
 
 }
