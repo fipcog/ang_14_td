@@ -16,8 +16,8 @@ import { AuthModule } from './auth/auth.module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    AuthModule,
-    TodosModule,
+    // AuthModule,
+    // TodosModule,
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
